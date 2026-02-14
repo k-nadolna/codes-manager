@@ -11,4 +11,6 @@ Route::get('/codes', [CodeController::class, 'index']);
 Route::get('/codes/create', [CodeController::class, 'create']);
 Route::post('/codes/store', [CodeController::class, 'store'])->name('codes.store');
 
-Route::get('/codes/delete', [CodeController::class, 'delete']);
+Route::get('/codes/delete', [CodeController::class, 'delete'])->name('codes.delete');
+
+Route::post('/codes/destroy', [CodeController::class, 'destroy'])->name('codes.destroy');

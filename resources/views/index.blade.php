@@ -10,30 +10,30 @@
   <nav class="bg-slate-100 shadow">
     <ul class="flex p-4 justify-center">
       <li>
-        <a href="/codes" class="p-2">home</a>
+        <a href="/codes" class="p-2">lista kodów</a>
       </li>
       <li>
-        <a href="/codes/create" class="p-2">create</a>
+        <a href="/codes/create" class="p-2">utwórz kody</a>
       </li>
       <li>
-        <a href="/codes/delete" class="p-2">delete</a>
+        <a href="/codes/delete" class="p-2">usuń kody</a>
       </li>
     </ul>
   </nav>
 
   <div class="flex justify-center mt-5">
     <div class="bg-slate-200 w-full md:w-1/2 shadow flex flex-col items-center justify-center">
-        <h1 class="text-2xl p-2 text-center">Codes List</h1> 
+        <h1 class="text-2xl p-2 text-center">Lista kodów</h1> 
 
       <div class="w-full p-3">
       @if($codes->isEmpty())
-        <p>rak kodów w bazie danych</p>
+        <p>Brak kodów w bazie danych</p>
       @else
         <table class="w-full border-collapse border border-gray-400">
           <thead>
-            <th class="border border-gray-400 p-2">code</th>
-            <th class="border border-gray-400 p-2">id_code</th>
-            <th class="border border-gray-400 p-2">created at</th>
+            <th class="border border-gray-400 p-2">kod</th>
+            <th class="border border-gray-400 p-2">id kodu</th>
+            <th class="border border-gray-400 p-2">utworzony</th>
           </thead>
           <tbody>
             

@@ -45,6 +45,31 @@ class CodeController extends Controller
     }
 
     function delete(){
-    return view('delete');
+        return view('delete');
+    }
+
+    function destroy(Request $request){
+        $request->validate([
+            'codes_to_delete' => 'required|string',
+        ]);
+
+        // separating codes after commas and/or enters
+        $input = $request->input('codes_to_delete');
+        $codesArray = preg_split('/[\s,]+/', $input);
+        $codesArray = array_filter(array_map('trim', $codesArray));
+
+        // checking which codes exist in the database
+        $existingCodes = Code::whereIn('code', $codesArray)->pluck('code')->toArray();
+
+        // checking for missing codes
+        $missingCodes = array_diff($codesArray, $existingCodes);
+
+        if (!empty($missingCodes)){
+            return back()->with('warning', 'Nie znaleziono następujących kodów w bazie danych: ' . implode(', ', $missingCodes));
+        }
+
+        Code::whereIn('code', $existingCodes)->delete();
+
+        return back()->with('success', 'Wybrane kody zostały pomyślnie usunięte');
     }
 }
