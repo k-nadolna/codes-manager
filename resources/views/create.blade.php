@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Codes Manager | Create</title>
+  <title>Codes Manager | Utwórz</title>
   @vite('resources/css/app.css')
 </head>
 <body>
-  <nav class="bg-slate-200 shadow">
+  <nav class="bg-slate-100 shadow">
     <ul class="flex p-4 justify-center">
       <li>
-        <a href="/codes" class="p-2">home</a>
+        <a href="/codes" class="p-2">lista kodów</a>
       </li>
       <li>
-        <a href="/codes/create" class="p-2">create</a>
+        <a href="/codes/create" class="p-2">utwórz kody</a>
       </li>
       <li>
-        <a href="/codes/delete" class="p-2">delete</a>
+        <a href="/codes/delete" class="p-2">usuń kody</a>
       </li>
     </ul>
   </nav>
+
   <div class="flex justify-center mt-5">
-    <div class="bg-slate-200 w-full sm:w-1/2 shadow flex flex-col items-center justify-center">
-        <h1 class="text-2xl p-2 text-center">Create Codes</h1> 
+    <div class="bg-slate-200 w-full sm:w-1/2 shadow flex flex-col items-center justify-center p-2">
+        <h1 class="text-2xl p-2 text-center">Utwórz kody</h1> 
 
       <div class="w-full p-3 flex justify-center">
         <form action="{{route('codes.store')}}" method="POST" class="flex flex-col w-full md:w-1/2">

@@ -7,33 +7,22 @@
   @vite('resources/css/app.css')
 </head>
 <body>
-  <nav class="bg-slate-100 shadow">
-    <ul class="flex p-4 justify-center">
-      <li>
-        <a href="/codes" class="p-2">lista kodów</a>
-      </li>
-      <li>
-        <a href="/codes/create" class="p-2">utwórz kody</a>
-      </li>
-      <li>
-        <a href="/codes/delete" class="p-2">usuń kody</a>
-      </li>
-    </ul>
-  </nav>
+  <x-nav />
 
   <div class="flex justify-center mt-5">
-    <div class="bg-slate-200 w-full md:w-1/2 shadow flex flex-col items-center justify-center">
+    <div class="bg-slate-200 w-full md:w-1/2 shadow flex flex-col items-center justify-center p-2">
         <h1 class="text-2xl p-2 text-center">Lista kodów</h1> 
 
       <div class="w-full p-3">
       @if($codes->isEmpty())
-        <p>Brak kodów w bazie danych</p>
+        <p class="text-center">Brak kodów w bazie danych</p>
       @else
-        <table class="w-full border-collapse border border-gray-400">
+        <table class="w-full border-collapse border border-gray-400 bg-slate-100">
           <thead>
             <th class="border border-gray-400 p-2">kod</th>
             <th class="border border-gray-400 p-2">id kodu</th>
             <th class="border border-gray-400 p-2">utworzony</th>
+            <th class="border border-gray-400 p-2">użytkownik</th>
           </thead>
           <tbody>
             
@@ -42,6 +31,7 @@
                 <td class="border border-gray-400 p-2">{{ $code->code }}</td>
                 <td class="border border-gray-400 p-2">{{ $code->id }}</td>
                 <td class="border border-gray-400 p-2">{{ $code->created_at }}</td>
+                <td class="border border-gray-400 p-2"> {{$code->user->name }} </td>
               </tr>
             @endforeach
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CodeController extends Controller
 {
     function index(){
-        $codes = Code::paginate(10);
+        $codes = Code::with('user')->paginate(10);
 
         return view('index', compact('codes'));
     }
@@ -36,6 +36,7 @@ class CodeController extends Controller
 
             Code::create([
                 'code' => $code,
+                'user_id' => auth()->id(),
             ]);
 
             $generated[] = $code;
