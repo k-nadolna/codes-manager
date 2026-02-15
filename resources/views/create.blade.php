@@ -7,20 +7,8 @@
   @vite('resources/css/app.css')
 </head>
 <body>
-  <nav class="bg-slate-100 shadow">
-    <ul class="flex p-4 justify-center">
-      <li>
-        <a href="/codes" class="p-2">lista kodów</a>
-      </li>
-      <li>
-        <a href="/codes/create" class="p-2">utwórz kody</a>
-      </li>
-      <li>
-        <a href="/codes/delete" class="p-2">usuń kody</a>
-      </li>
-    </ul>
-  </nav>
-
+  <x-nav />
+  
   <div class="flex justify-center mt-5">
     <div class="bg-slate-200 w-full sm:w-1/2 shadow flex flex-col items-center justify-center p-2">
         <h1 class="text-2xl p-2 text-center">Utwórz kody</h1> 
