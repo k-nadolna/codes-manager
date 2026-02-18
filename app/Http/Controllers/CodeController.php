@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Code;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CodeController extends Controller
 {
     function index(){
-        $codes = Code::with('user')->paginate(10);
+        $codes = Code::where('user_id', Auth::id())
+                    ->with('user')
+                    ->paginate(10);
 
         return view('index', compact('codes'));
     }
@@ -60,7 +63,10 @@ class CodeController extends Controller
         $codesArray = array_filter(array_map('trim', $codesArray));
 
         // checking which codes exist in the database
-        $existingCodes = Code::whereIn('code', $codesArray)->pluck('code')->toArray();
+        $existingCodes = Code::whereIn('code', $codesArray)
+                     ->where('user_id', Auth::id())
+                     ->pluck('code')
+                     ->toArray();
 
         // checking for missing codes
         $missingCodes = array_diff($codesArray, $existingCodes);

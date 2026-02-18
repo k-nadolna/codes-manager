@@ -1,10 +1,10 @@
  <nav class="bg-slate-100 shadow">
     <ul class="flex p-4 justify-center items-center">
-      <li>
+      @auth
+       <li>
         <a href="/codes" class="p-2">Lista kodów</a>
       </li>
 
-      @auth
       <li>
         <a href="/codes/create" class="p-2">Utwórz kody</a>
       </li>

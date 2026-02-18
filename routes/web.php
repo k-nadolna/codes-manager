@@ -11,10 +11,10 @@ Route::get('/auth/login', [AuthController::class, 'showLogin'])->name('auth.logi
 Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::get('/', [CodeController::class, 'index']);
-Route::get('/codes', [CodeController::class, 'index']);
+Route::redirect('/', '/auth/login');
 
 Route::middleware(['auth'])->group(function() {
+  Route::get('/codes', [CodeController::class, 'index']);
   Route::get('/codes/create', [CodeController::class, 'create']);
   Route::post('/codes/store', [CodeController::class, 'store'])->name('codes.store');
   Route::get('/codes/delete', [CodeController::class, 'delete'])->name('codes.delete');
