@@ -57,8 +57,15 @@ php artisan migrate
 
 npm install
 
+8. Kompilacja assetów
 
-8. Uruchom Vite
+npm run build
 
-npm run dev
+
+9. Uruchomienie projektu w web serwerze 
+(Przykład dla Homestead:)
+
+vagrant up
+
+
 
