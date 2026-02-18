@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showRegister()
+    public function showRegister(): View
     {
       return view('auth.register');
     }
 
-    public function register(Request $request){
+    public function register(Request $request): RedirectResponse
+    {
       $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users',
@@ -26,17 +29,17 @@ class AuthController extends Controller
         'email' => $request->email,
         'password' => Hash::make($request->password),
       ]);
-
-        return back()->with('success', 'Konto utworzone. Możesz się zalogować');
-
+      
+        return redirect()->route('auth.login.form');
     }
 
-    public function showLogin(){
-
+    public function showLogin(): View
+    {
       return view('auth.login');
     }
 
-    public function login (Request $request){
+    public function login (Request $request): RedirectResponse
+    {
         $credentials = $request->validate([
           'email' => 'email|required',
           'password' => 'required',
@@ -50,8 +53,8 @@ class AuthController extends Controller
         return back()->with('error', 'Nieprawidłowe dane logowania');
     }
 
-    public function logout(Request $request){
-
+    public function logout(Request $request): RedirectResponse
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

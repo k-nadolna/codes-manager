@@ -45,7 +45,8 @@ class CodeController extends Controller
                     ->with('success', 'Kody zostały pomyślnie wygenerowane');
     }
 
-    public function delete(){
+    public function delete()
+    {
         return view('delete');
     }
 
