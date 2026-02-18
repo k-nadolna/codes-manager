@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Code;
+use App\Services\CodeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CodeController extends Controller
 {
+    protected $codeService;
+
+    public function __construct(CodeService $codeService)
+    {
+        $this->codeService = $codeService;
+    }
+
     function index(){
         $codes = Code::where('user_id', Auth::id())
                     ->with('user')
@@ -21,29 +29,11 @@ class CodeController extends Controller
     }
 
     function store(Request $request){
-        $validated = $request->validate([
+         $validated = $request->validate([
             'quantity' => 'required|integer|min:1|max:10',
         ]);
 
-        $quantity = $validated['quantity'];
-        $generated = [];
-
-        // generating numbers
-        while(count($generated) < $quantity){
-            $code = (string) random_int(1000000000, 9999999999);
-
-            if(in_array($code, $generated) || Code::where('code', $code)->exists()
-            ){
-                continue;
-            }
-
-            Code::create([
-                'code' => $code,
-                'user_id' => auth()->id(),
-            ]);
-
-            $generated[] = $code;
-        }
+        $generated = $this->codeService->generateMultipleCodes($validated['quantity']);
 
         return back()->with('success', 'Kody zostały pomyślnie wygenerowane');
     }
