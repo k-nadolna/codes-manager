@@ -24,12 +24,12 @@ class CodeController extends Controller
                     ->with('user')
                     ->paginate(10);
 
-        return view('index', compact('codes'));
+        return view('codes.index', compact('codes'));
     }
 
     public function create(): View
     {
-        return view('create');
+        return view('codes.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -47,7 +47,7 @@ class CodeController extends Controller
 
     public function delete()
     {
-        return view('delete');
+        return view('codes.delete');
     }
 
     public function destroy(Request $request): RedirectResponse
