@@ -71,7 +71,7 @@ class CodeController extends Controller
         $missingCodes = array_diff($codesArray, $existingCodes);
 
         if (!empty($missingCodes)){
-            return back()->with('warning', 'Nie znaleziono następujących kodów w bazie danych: ' . implode(', ', $missingCodes));
+            return back()->with('error', 'Nie znaleziono następujących kodów w bazie danych: ' . implode(', ', $missingCodes));
         }
 
         Code::whereIn('code', $existingCodes)->delete();

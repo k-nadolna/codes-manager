@@ -12,9 +12,10 @@
       <label for="password" class="my-2">Hasło</label>
       <input type="password" id="password" name="password" class="p-1" required>
       <input type="submit" class="py-2 my-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" value="Zaloguj">
-        @if(session('error'))
+        {{-- @if(session('error'))
           <p class="text-red-400">{{session('error')}}</p>
-        @endif
+        @endif --}}
+        <x-messages />
     </form>
   </div>
 @endsection

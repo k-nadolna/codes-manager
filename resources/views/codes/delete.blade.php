@@ -11,13 +11,15 @@
       <textarea name="codes_to_delete" id="codes_to_delete" class="p-2" required>{{ old('codes_to_delete')}}</textarea>
       <input type="submit" class="py-2 my-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" value="Usuń">
 
-      @if(session('success'))
+      {{-- @if(session('success'))
         <p class="text-green-600">{{ session('success') }}</p>
       @endif
 
       @if(session('warning'))
         <p class="text-red-500"> {{ session('warning') }} </p>
-      @endif
+      @endif --}}
+
+      <x-messages />
     </form>
   </div>
 @endsection
