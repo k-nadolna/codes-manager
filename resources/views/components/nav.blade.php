@@ -1,6 +1,9 @@
  <nav class="bg-slate-100 shadow">
     <ul class="flex p-4 justify-center items-center">
       @auth
+      <li>
+        <p class="font-medium">Witaj {{ auth()->user()->name }}</p>
+      </li>
        <li>
         <a href="{{ route('codes.index')}}" class="p-2">Lista kodów</a>
       </li>
