@@ -41,7 +41,7 @@ class CodeController extends Controller
         $generated = $this->codeService->generateMultipleCodes($validated['quantity']);
 
         return redirect()
-                    ->route('index')
+                    ->route('codes.index')
                     ->with('success', 'Kody zostały pomyślnie wygenerowane');
     }
 
@@ -77,7 +77,7 @@ class CodeController extends Controller
         Code::whereIn('code', $existingCodes)->delete();
 
         return redirect()
-                ->route('index')
+                ->route('codes.index')
                 ->with('success', 'Wybrane kody zostały pomyślnie usunięte');
     }
 }

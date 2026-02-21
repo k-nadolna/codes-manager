@@ -21,8 +21,8 @@ Route::middleware(['auth'])
     ->prefix('codes')
     ->controller(CodeController::class)
     ->group(function() {
-      Route::get('/',  'index')->name('index');
-      Route::get('create', 'create');
+      Route::get('/',  'index')->name('codes.index');
+      Route::get('create', 'create')->name('codes.create');
       Route::post('store', 'store')->name('codes.store');
       Route::get('delete', 'delete')->name('codes.delete');
       Route::post('destroy', 'destroy')->name('codes.destroy');

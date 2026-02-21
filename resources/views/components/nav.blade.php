@@ -2,14 +2,14 @@
     <ul class="flex p-4 justify-center items-center">
       @auth
        <li>
-        <a href="/codes" class="p-2">Lista kodów</a>
+        <a href="{{ route('codes.index')}}" class="p-2">Lista kodów</a>
       </li>
 
       <li>
-        <a href="/codes/create" class="p-2">Utwórz kody</a>
+        <a href="{{ route('codes.create')}}" class="p-2">Utwórz kody</a>
       </li>
       <li>
-        <a href="/codes/delete" class="p-2">Usuń kody</a>
+        <a href="{{ route('codes.delete')}}" class="p-2">Usuń kody</a>
       </li >
       <li >
         <form action="{{ route('auth.logout')}}" method="POST">
