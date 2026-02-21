@@ -45,7 +45,7 @@ class CodeController extends Controller
                     ->with('success', 'Kody zostały pomyślnie wygenerowane');
     }
 
-    public function delete()
+    public function delete(): View
     {
         return view('codes.delete');
     }
@@ -76,6 +76,8 @@ class CodeController extends Controller
 
         Code::whereIn('code', $existingCodes)->delete();
 
-        return back()->with('success', 'Wybrane kody zostały pomyślnie usunięte');
+        return redirect()
+                ->route('index')
+                ->with('success', 'Wybrane kody zostały pomyślnie usunięte');
     }
 }

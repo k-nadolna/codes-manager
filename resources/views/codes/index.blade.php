@@ -8,6 +8,7 @@
     @if($codes->isEmpty())
       <p class="text-center">Brak kodów w bazie danych</p>
     @else
+      <x-messages />
       <table class="w-full border-collapse border border-gray-400 bg-slate-100">
         <thead>
           <th class="border border-gray-400 p-2">kod</th>

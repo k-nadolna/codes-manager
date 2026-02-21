@@ -14,9 +14,6 @@
       <label for="password" class="my-2">Hasło</label>
       <input type="password" id="password" name="password" class="p-1" required>
       <input type="submit" class="py-2 my-2 bg-slate-300 hover:bg-slate-400 cursor-pointer" value="Zarejestruj">
-        {{-- @if(session('success'))
-          <p class="text-green-600">{{session('success')}}</p>
-        @endif --}}
 
       <x-messages/>
     </form>
